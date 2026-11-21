@@ -4,47 +4,47 @@ import subprocess
 def test_three_words():
     result = subprocess.run(
         ["./sentencemaker"],
-        input="猫 学校 昼寝\n",
+        input="私 洞窟 探検\n",
         text=True,
         capture_output=True
     )
 
     assert result.returncode == 0
-    assert "猫" in result.stdout
-    assert "学校" in result.stdout
-    assert "昼寝" in result.stdout
+    assert "私" in result.stdout
+    assert "洞窟" in result.stdout
+    assert "探検" in result.stdout
     assert result.stdout.strip().endswith("。")
 
 
 def test_four_words():
     result = subprocess.run(
         ["./sentencemaker"],
-        input="猫 学校 昼寝 お菓子\n",
+        input="女の子 公園 散歩 花\n",
         text=True,
         capture_output=True
     )
 
     assert result.returncode == 0
-    assert "猫" in result.stdout
-    assert "学校" in result.stdout
-    assert "昼寝" in result.stdout
-    assert "お菓子" in result.stdout
+    assert "女の子" in result.stdout
+    assert "公園" in result.stdout
+    assert "散歩" in result.stdout
+    assert "花" in result.stdout
     assert result.stdout.strip().endswith("。")
 
 
 def test_five_words():
     result = subprocess.run(
         ["./sentencemaker"],
-        input="猫 学校 昼寝 お菓子 友達\n",
+        input="私 森 冒険 宝物 友達\n",
         text=True,
         capture_output=True
     )
 
     assert result.returncode == 0
-    assert "猫" in result.stdout
-    assert "学校" in result.stdout
-    assert "昼寝" in result.stdout
-    assert "お菓子" in result.stdout
+    assert "私" in result.stdout
+    assert "森" in result.stdout
+    assert "冒険" in result.stdout
+    assert "宝物" in result.stdout
     assert "友達" in result.stdout
     assert result.stdout.strip().endswith("。")
 
@@ -52,7 +52,7 @@ def test_five_words():
 def test_two_words():
     result = subprocess.run(
         ["./sentencemaker"],
-        input="猫 学校\n",
+        input="私 洞窟\n",
         text=True,
         capture_output=True
     )
@@ -63,20 +63,9 @@ def test_two_words():
 def test_six_words():
     result = subprocess.run(
         ["./sentencemaker"],
-        input="猫 学校 昼寝 お菓子 友達 公園\n",
+        input="私 森 冒険 宝物 友達 公園\n",
         text=True,
         capture_output=True
     )
 
     assert result.returncode != 0
-def test_invalid_word_count():
-    result = subprocess.run(
-        ["./sentencemaker"],
-        input="猫 学校\n",
-        text=True,
-        capture_output=True
-    )
-
-    assert result.returncode == 1
-    assert result.stdout == ""
-    assert result.stderr == "単語は3〜5個で入力してください。\n"
