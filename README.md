@@ -1,11 +1,12 @@
 # sentence-makerコマンド
 
 標準入力から読み込んだ3~5個の単語を使って、ランダムに文章を作成します。
+文章を考えるきっかけとして利用できます。
 
 ## 必要なソフトウェア
 
 Python
- - テスト済みバージョン：3.12.3
+ - テスト済みバージョン：3.10〜3.14
 
 ## 使い方
 
@@ -24,7 +25,7 @@ Python
 ### 3語の場合
 
 実行例
-echo "私 洞窟 探検" | ./sentencemaker
+$ echo "私 洞窟 探検" | ./sentencemaker
 
 出力例
 私は洞窟で探検をしました。
@@ -32,7 +33,7 @@ echo "私 洞窟 探検" | ./sentencemaker
 ### 4語の場合
 
 実行例
-echo "女の子 公園 散歩 花" | ./sentencemaker
+$ echo "女の子 公園 散歩 花" | ./sentencemaker
 
 出力例
 女の子は公園で散歩をして、花を見つけました。
@@ -40,7 +41,7 @@ echo "女の子 公園 散歩 花" | ./sentencemaker
 ### 5語の場合
 
 実行例
-echo "私 森 冒険 宝物 友達" | ./sentencemaker
+$ echo "私 森 冒険 宝物 友達" | ./sentencemaker
 
 出力例
 私は森で友達と一緒に冒険をして、宝物を見つけました。
@@ -54,5 +55,5 @@ echo "私 森 冒険 宝物 友達" | ./sentencemaker
 Ubuntu 24.04 LTS
 
 ## ライセンス
-
-© 2026 Momoka Kawamura
+ - このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
+ - © 2026 Momoka Kawamura
