@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Momoka Kawamura
+# SPDX-License-Identifier: BSD-3-Clause
+
+import sys
+import random
+
+words = []
+
+for line in sys.stdin:
+    words += line.split()
+
+if len(words) < 3 or len(words) > 5:
+    print("単語は3〜5個で入力してください。", file=sys.stderr)
+    sys.exit(1)
+
+subject = words[0]
+place = words[1]
+action = words[2]
+
+if len(words) == 3:
+    patterns = [
+        "{}は{}で{}をしました。",
+        "{}が{}で{}をしました。",
+        "{}で{}が{}をしました。"
+    ]
+
+    sentence = random.choice(patterns).format(
+        subject, place, action
+    )
+
+if len(words) == 4:
+    extra_actions = [
+        "見つけました",
+        "見ました",
+        "手に入れました",
+        "楽しみました"
+    ]
+
+    extra_action = random.choice(extra_actions)
+
+    patterns = [
+        "{}は{}で{}をして、{}を{}。",
+        "{}が{}で{}をして、{}を{}。",
+        "{}で{}が{}をして、{}を{}。"
+    ]
+
+    sentence = random.choice(patterns).format(
+        subject, place, action, words[3], extra_action
+    )
+
+if len(words) == 5:
+    extra_actions = [
+        "見つけました",
+        "見ました",
+        "手に入れました",
+        "楽しみました"
+    ]
+
+    extra_action = random.choice(extra_actions)
+
+    patterns = [
+        "{}は{}で{}と一緒に{}をして、{}を{}。",
+        "{}が{}で{}と一緒に{}をして、{}を{}。",
+        "{}で{}が{}と一緒に{}をして、{}を{}。"
+    ]
+
+    sentence = random.choice(patterns).format(
+        subject, place, words[4], action, words[3], extra_action
+    )
+
+print(sentence)
