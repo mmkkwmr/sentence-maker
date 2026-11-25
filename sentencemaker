@@ -24,10 +24,12 @@ if len(words) == 3:
         "{}が{}で{}をしました。",
         "{}で{}が{}をしました。"
     ]
+    selected_pattern = random.choice(patterns)
 
-    sentence = random.choice(patterns).format(
-        subject, place, action
-    )
+if selected_pattern == "{}で{}が{}をしました。":
+   sentence = selected_pattern.format(place, subject, action)
+else:
+    sentence = selected_pattern.format(subject, place, action)
 
 if len(words) == 4:
     extra_actions = [
