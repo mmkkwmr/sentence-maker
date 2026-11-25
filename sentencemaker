@@ -58,30 +58,28 @@ if len(words) == 4:
     sentence += extra_pattern.format(words[3])
 
 if len(words) == 5:
-    extra_actions = [
-        "見つけました",
-        "見ました",
-        "手に入れました",
-        "楽しみました"
-    ]
-
-    extra_action = random.choice(extra_actions)
-
     patterns = [
-        "{}は{}で{}と一緒に{}をして、{}を{}。",
-        "{}が{}で{}と一緒に{}をして、{}を{}。",
-        "{}で{}が{}と一緒に{}をして、{}を{}。"
+        "{}は{}で{}をした。",
+        "{}は{}で{}をする。",
+        "{}は{}で{}をしている。",
+        "{}は{}で{}をしていた。"
     ]
 
     selected_pattern = random.choice(patterns)
 
-    if selected_pattern == "{}で{}が{}と一緒に{}をして、{}を{}。":
-       sentence = selected_pattern.format(
-       place, subject, words[4], action, words[3], extra_action
-        )
-    else:
-        sentence = selected_pattern.format(
-        subject, place, words[4], action, words[3], extra_action
-        )
+    sentence = selected_pattern.format(
+        subject, place, action
+    )
+
+    extra_patterns = [
+        "{}と{}を持っていた。",
+        "{}と{}を見ていた。",
+        "{}と{}を使っていた。",
+        "{}と{}を調べていた。"
+    ]
+
+    extra_pattern = random.choice(extra_patterns)
+
+    sentence += extra_pattern.format(words[3], words[4])
 
 print(sentence)
