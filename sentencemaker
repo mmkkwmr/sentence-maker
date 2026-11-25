@@ -20,16 +20,17 @@ action = words[2]
 
 if len(words) == 3:
     patterns = [
-        "{}は{}で{}をしました。",
-        "{}が{}で{}をしました。",
-        "{}で{}が{}をしました。"
+        "{}は{}で{}をした。",
+        "{}は{}で{}をする。",
+        "{}は{}で{}をしている。",
+        "{}は{}で{}をしていた。"
     ]
+
     selected_pattern = random.choice(patterns)
 
-if selected_pattern == "{}で{}が{}をしました。":
-   sentence = selected_pattern.format(place, subject, action)
-else:
-    sentence = selected_pattern.format(subject, place, action)
+    sentence = selected_pattern.format(
+        subject, place, action
+    )
 
 if len(words) == 4:
     extra_actions = [
@@ -47,9 +48,16 @@ if len(words) == 4:
         "{}で{}が{}をして、{}を{}。"
     ]
 
-    sentence = random.choice(patterns).format(
+    selected_pattern = random.choice(patterns)
+
+    if selected_pattern == "{}で{}が{}をして、{}を{}。":
+       sentence = selected_pattern.format(
+       place, subject, action, words[3], extra_action
+        )
+    else:
+        sentence = selected_pattern.format(
         subject, place, action, words[3], extra_action
-    )
+        )
 
 if len(words) == 5:
     extra_actions = [
@@ -67,8 +75,15 @@ if len(words) == 5:
         "{}で{}が{}と一緒に{}をして、{}を{}。"
     ]
 
-    sentence = random.choice(patterns).format(
+    selected_pattern = random.choice(patterns)
+
+    if selected_pattern == "{}で{}が{}と一緒に{}をして、{}を{}。":
+       sentence = selected_pattern.format(
+       place, subject, words[4], action, words[3], extra_action
+        )
+    else:
+        sentence = selected_pattern.format(
         subject, place, words[4], action, words[3], extra_action
-    )
+        )
 
 print(sentence)
